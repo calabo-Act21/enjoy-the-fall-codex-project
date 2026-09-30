@@ -1,0 +1,14 @@
+{
+  "name": "Enjoy The Fall",
+  "short_name": "Enjoy The Fall",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "minimal-ui",
+  "background_color": "#e8e2d8",
+  "theme_color": "#0f0f0e",
+  "icons": [
+    {"src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+  ]
+}

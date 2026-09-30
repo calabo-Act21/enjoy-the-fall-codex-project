@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: domaine de production a configurer avant publication.
+Sitemap: https://enjoy-the-fall.example/sitemap.xml
