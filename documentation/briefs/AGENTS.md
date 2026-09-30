@@ -1,5 +1,7 @@
 # AGENTS.md — Enjoy The Fall website
 
+> Archived initial instructions. The site now lives at the repository root for GitHub Pages, not in `site/`. Follow [the current maintenance guide](../README.md); preserve the approved design. Source materials remain at `../../source-material/`.
+
 ## Mission
 
 Build the official Enjoy The Fall showcase website.

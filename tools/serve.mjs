@@ -4,6 +4,10 @@ import { dirname, extname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const html = await readFile(resolve(root, "index.html"), "utf8");
+const canonical = html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+if (!canonical) throw new Error("URL canonique introuvable dans index.html.");
+const basePath = new URL(canonical).pathname;
 const port = Number(process.argv[2] || 4173);
 if (!Number.isInteger(port) || port < 1024 || port > 65535) {
   throw new Error("Port attendu : entier entre 1024 et 65535.");
@@ -29,6 +33,12 @@ createServer(async (request, response) => {
     response.writeHead(400).end("Requete invalide");
     return;
   }
+  if (basePath !== "/" && pathname === basePath.slice(0, -1)) {
+    response.writeHead(301, { Location: basePath }).end();
+    return;
+  }
+  const usesBasePath = basePath !== "/" && pathname.startsWith(basePath);
+  if (usesBasePath) pathname = `/${pathname.slice(basePath.length)}`;
   const file = resolve(root, `.${pathname === "/" ? "/index.html" : pathname}`);
   if (!file.startsWith(root + sep)) {
     response.writeHead(403).end("Acces refuse");
@@ -45,7 +55,8 @@ createServer(async (request, response) => {
       return;
     }
     response.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
-    response.end(request.method === "HEAD" ? undefined : await readFile(resolve(root, "404.html")));
+    const notFound = await readFile(resolve(root, "404.html"), "utf8");
+    response.end(request.method === "HEAD" ? undefined : notFound.replace(/<base href="[^"]*">/, `<base href="${usesBasePath ? basePath : "/"}">`));
   }
 }).listen(port, "127.0.0.1", () => {
   console.log(`Enjoy The Fall : http://127.0.0.1:${port}`);

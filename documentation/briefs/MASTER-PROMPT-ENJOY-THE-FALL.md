@@ -1,5 +1,7 @@
 # Master build prompt v2 — Enjoy The Fall official website
 
+> Historical build brief. The production files have since moved from `site/` to the repository root for GitHub Pages. Refer to [the current guide](../README.md) for maintenance and deployment; do not rebuild the approved design.
+
 You are a senior web designer, front-end engineer, accessibility specialist and technical SEO engineer. Build a production-ready one-page showcase website for the Toulouse rock band **Enjoy The Fall**.
 
 The result must be credible as the band's official website and suitable to send to concert programmers, festivals, press/media and listeners.

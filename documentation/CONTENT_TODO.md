@@ -1,8 +1,9 @@
 # Informations à confirmer
 
-## Avant publication
+## Publication
 
-- **Domaine officiel** : remplacer le placeholder réservé `https://enjoy-the-fall.example` avec le script décrit dans le [README](README.md). Aucune adresse officielle n'a été supposée.
+- **GitHub Pages** : sélectionner la branche à publier et `/ (root)` dans les paramètres Pages. L'URL de projet est déjà configurée : `https://calabo-act21.github.io/enjoy-the-fall-codex-project/`.
+- **Domaine personnalisé éventuel** : aucun n'est supposé. S'il est confirmé, utiliser le script décrit dans le [README](README.md), puis configurer GitHub Pages et le DNS.
 
 ## Lors des prochaines mises à jour
 

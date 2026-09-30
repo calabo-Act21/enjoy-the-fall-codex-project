@@ -1,5 +1,7 @@
 # START HERE — Enjoy The Fall × Codex
 
+> Archive du brief initial. Depuis la migration GitHub Pages, le site est à la racine du dépôt et non dans `site/`. Pour travailler sur la version validée ou la déployer, suivre le [guide actuel](../README.md). Les fichiers de ce dossier sont conservés comme références historiques.
+
 Ce dossier est prêt à être ouvert comme projet Codex.
 
 ## Option la plus simple
