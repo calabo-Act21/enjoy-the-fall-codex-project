@@ -1,0 +1,9 @@
+Lis d'abord `AGENTS.md`, puis `MASTER-PROMPT-ENJOY-THE-FALL.md` et `DESIGN-SYSTEM.md`.
+
+Inspecte ensuite tout le contenu utile de `source-material/`, y compris l'EPK PDF, les trois photos, le logo et — seulement si nécessaire — l'ancien prototype.
+
+Exécute ensuite le master prompt de bout en bout. Construis le site final dans `site/`, sans modifier les fichiers de `source-material/`.
+
+Avant de terminer, lance le site localement, inspecte réellement le rendu à des largeurs mobile et desktop, corrige les problèmes visuels évidents, vérifie l'accessibilité, les liens, le lecteur vidéo, le SEO et les données structurées.
+
+Ne m'interromps pas pour des choix mineurs : prends des décisions de design cohérentes avec le brief. En revanche, n'invente aucune information factuelle manquante.

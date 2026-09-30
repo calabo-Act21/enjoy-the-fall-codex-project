@@ -1,0 +1,16 @@
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Optional local tooling
+node_modules/
+.cache/
+dist/
+
+# Keep source material and site under version control
