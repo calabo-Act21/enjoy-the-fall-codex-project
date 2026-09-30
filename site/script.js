@@ -2,11 +2,11 @@
 
 // Dates ISO ; une date au mois près reste au format YYYY-MM.
 const shows = [
-  { date: "2026-10-03", event: "Le Survolté Festival", city: "", note: "Sélection coup de cœur", url: "" },
+  { date: "2026-10-03", event: "Le Survolté Festival", city: "", note: "", url: "https://lesurvoltefestival.org/", urlLabel: "Site du festival" },
   { date: "2026-06-25", event: "Little O’Clock", city: "Toulouse", note: "", url: "" },
   { date: "2026-05-07", event: "L’Engrenage", city: "Balma", note: "", url: "" },
   { date: "2026-04-25", event: "L’Acoustic Bar", city: "Montauban", note: "", url: "" },
-  { date: "2025-11", event: "AlamZic", city: "Bagnères-de-Bigorre", note: "Résidence", url: "" }
+  { date: "2025-11", event: "AlamZic", city: "Bagnères-de-Bigorre", note: "", url: "" }
 ];
 
 const header = document.querySelector(".site-header");
@@ -92,10 +92,10 @@ function createShow(show) {
     const url = new URL(show.url);
     if (url.protocol !== "https:") throw new Error(`Lien de concert non HTTPS : ${show.event}`);
     const link = document.createElement("a");
-    link.className = "text-link";
+    link.className = "show-note text-link";
     link.href = url.href;
-    link.textContent = `Infos / billets — ${show.event}`;
-    details.append(link);
+    link.textContent = show.urlLabel || `Infos / billets — ${show.event}`;
+    row.append(link);
   }
   return row;
 }

@@ -36,11 +36,12 @@ L'indexation est autorisée. Ne pas publier le placeholder. Aucune URL de stream
 Modifier le tableau `shows` au début de [script.js](script.js) :
 
 ```js
-{ date: "2026-10-03", event: "Le Survolté Festival", city: "", note: "Sélection coup de cœur", url: "" }
+{ date: "2026-10-03", event: "Le Survolté Festival", city: "", note: "", url: "https://lesurvoltefestival.org/", urlLabel: "Site du festival" }
 ```
 
 - Date complète : `YYYY-MM-DD`. Si seul le mois est connu : `YYYY-MM`, sans inventer de jour.
 - Laisser `city` et `url` vides si l'information manque. Les liens ajoutés doivent être des URLs HTTPS vérifiées.
+- `urlLabel` permet de nommer le lien affiché à droite de la date (par exemple « Site du festival »). Laisser `note` vide pour ne pas afficher d'encadré de précision.
 - Les dates du jour restent à venir jusqu'à la fin de la journée **Europe/Paris**. Une entrée connue au mois près reste à venir pendant tout le mois. Le classement et le tri se font automatiquement au chargement, selon l'horloge du visiteur.
 - Après la dernière date, « Nouvelles dates bientôt » apparaît. Les dates passées restent dans une archive dépliable.
 - Mettre à jour aussi la liste HTML `#live-static` dans [index.html](index.html) : elle sert de version lisible sans JavaScript et de contenu explorable. Cette liste est volontairement neutre, sans statut temporel périssable.
@@ -58,7 +59,7 @@ Dans [index.html](index.html), chaque `.video-option` contient :
 
 La première option est sélectionnée initialement. Si elle change, mettre à jour aussi `#video-load` et `#video-external`, visibles sans JavaScript. Préparer les miniatures WebP locales dans [assets/images](assets/images) à partir des vidéos officielles, sans substituer une image d'un autre concert.
 
-Le script transforme les liens en boutons avec état `aria-pressed`. La sélection remplace le lecteur par une façade : elle arrête la vidéo précédente et ne lance jamais automatiquement la suivante. Le bouton central charge `youtube-nocookie.com` ; il faut ensuite lancer la lecture dans YouTube. Les liens directs restent disponibles si l'intégration est bloquée. Les vidéos de Google Drive restent des liens séparés.
+Le script transforme les liens en boutons avec état `aria-pressed`. La sélection remplace le lecteur par une façade : elle arrête la vidéo précédente et ne lance jamais automatiquement la suivante. Le bouton central charge `youtube-nocookie.com` ; il faut ensuite lancer la lecture dans YouTube. Les liens directs restent disponibles si l'intégration est bloquée.
 
 ### Musique, sorties et liens
 
