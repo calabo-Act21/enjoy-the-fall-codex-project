@@ -320,3 +320,9 @@ summary span { font-weight: 400; margin-left: 8px; }
  .hero-media video, .hero-media .hero-poster { height: calc(100% / 1.5); }
  .hero .hero-media img, .hero-media video { object-position: center; }
 }
+
+/* Keep hero actions aligned after the shorter editorial copy. */
+.hero-caption { justify-content: flex-end; }
+@media (min-width: 900px) {
+ .hero-note { grid-template-columns: 1fr auto; }
+}
