@@ -187,14 +187,16 @@ showFacade();
   function render() {
     queued = false;
     const viewport = innerHeight;
-    const geometry = scenes.map(scene => ({scene, rect: scene.frame.getBoundingClientRect(), imageHeight: scene.image.offsetHeight}));
+    const geometry = scenes.map(scene => ({scene, rect: scene.frame.getBoundingClientRect(), imageHeight: scene.image.getBoundingClientRect().height}));
     geometry.forEach(({scene, rect, imageHeight}) => {
       if (preference.matches) { scene.image.style.transform = ''; return; }
       if (rect.bottom < 0 || rect.top > viewport) return;
       // Centered reserve covers the entire active interval, including reverse scroll.
-      const reference = scene.frame.id === "accueil" ? header.offsetHeight : viewport / 2 - rect.height / 2;
-      const shift = (reference - rect.top) * (1 - scene.ratio);
       const reserve = (imageHeight - rect.height) / 2;
+      const reference = scene.frame.id === "accueil" ? header.offsetHeight : viewport / 2 - rect.height / 2;
+      // At the center of Bio, align the top of the photograph to preserve faces.
+      const focalOffset = scene.frame.classList.contains('bio-photo') ? reserve : 0;
+      const shift = (reference - rect.top) * (1 - scene.ratio) + focalOffset;
       scene.image.style.transform = `translate3d(0, ${Math.max(-reserve, Math.min(reserve, shift))}px, 0)`;
     });
   }
