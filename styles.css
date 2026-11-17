@@ -293,3 +293,24 @@ summary span { font-weight: 400; margin-left: 8px; }
  .hero .scene-image img { mask-image: linear-gradient(to bottom, #000 0 18%, transparent 36%); }
  .hero-note { align-items: flex-start; }
 }
+
+/* Animated hero: the existing scene wrapper retains its parallax transform. */
+.hero .hero-media { inset: 0 0 -50%; background: var(--color-ink); }
+.hero-media video, .hero-media .hero-poster { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero .hero-media img, .hero-media video { object-fit: cover; object-position: center; mask-image: none; }
+.hero-media video { opacity: 0; }
+.hero-media.is-playing video { opacity: 1; }
+.hero-video-toggle { position: absolute; top: 20px; right: var(--gutter); max-width: calc(100% - 40px); padding: 10px 14px; border: 1px solid var(--color-line-light); background: var(--color-ink); color: var(--color-paper); font-size: 11px; min-height: 44px; }
+@media (max-width: 599px) {
+ .hero .hero-media { inset: 0 0 -50%; }
+ .hero .hero-media img, .hero-media video { object-position: 50% 30%; }
+ .hero::after { background: linear-gradient(180deg, rgba(15,15,14,.1), rgba(15,15,14,.4) 30%, rgba(15,15,14,.94) 70%); }
+}
+@media (max-width: 599px) {
+ .hero-media video, .hero-media .hero-poster { height: min(650px, 80svh); }
+ .hero .hero-media img, .hero-media video { object-position: center; mask-image: linear-gradient(to bottom, #000 70%, transparent); }
+}
+/* Keep all four faces in the relocated group photo while retaining movement. */
+.bio-photo .scene-image { inset: -20% 0; background: var(--color-ink); }
+.bio-photo .scene-image::before { content: ""; position: absolute; inset: -20px; background: url("assets/images/hero-1280.webp") center / cover; filter: blur(18px) brightness(.55); z-index: -1; }
+.bio-photo .scene-image img { object-fit: contain; object-position: center; }

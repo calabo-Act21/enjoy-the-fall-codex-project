@@ -206,3 +206,43 @@ showFacade();
   new ResizeObserver(schedule).observe(document.body);
   schedule();
 })();
+
+
+// Decorative video: no audio, no download for reduced motion, pause when offscreen.
+(() => {
+  const video = document.querySelector('#hero-video');
+  const media = document.querySelector('.hero-media');
+  const toggle = document.querySelector('.hero-video-toggle');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const small = matchMedia('(max-width: 599px)');
+  let userPaused = false;
+  let visible = true;
+  function label() {
+    toggle.textContent = video.paused ? 'Animer le fond vidéo' : 'Mettre le fond vidéo en pause';
+  }
+  async function sync() {
+    if (reduced.matches) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      media.classList.remove('is-playing');
+      toggle.hidden = true;
+      return;
+    }
+    toggle.hidden = false;
+    const source = small.matches ? video.dataset.mobile : video.dataset.desktop;
+    video.poster = `assets/images/hero-video-${small.matches ? 'mobile' : 'desktop'}.jpg`;
+    if (video.getAttribute('src') !== source) { video.src = source; video.muted = true; }
+    if (userPaused || !visible || document.hidden) { video.pause(); label(); return; }
+    try { await video.play(); } catch { label(); }
+  }
+  video.addEventListener('playing', () => { media.classList.add('is-playing'); label(); });
+  video.addEventListener('pause', label);
+  video.addEventListener('error', () => { media.classList.remove('is-playing'); toggle.hidden = true; });
+  toggle.addEventListener('click', () => { userPaused = !userPaused; sync(); });
+  reduced.addEventListener('change', sync);
+  small.addEventListener('change', sync);
+  document.addEventListener('visibilitychange', sync);
+  new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(document.querySelector('#accueil'));
+  sync();
+})();
