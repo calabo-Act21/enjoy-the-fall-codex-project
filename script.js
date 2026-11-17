@@ -176,3 +176,33 @@ videoOptions.forEach((button) => {
   });
 });
 showFacade();
+
+// Stable scene coordinates, no smoothing: images stop as soon as scrolling stops.
+(() => {
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const scenes = [...document.querySelectorAll('[data-parallax]')].map(frame => ({
+    frame, image: frame.querySelector('.scene-image'), ratio: Number(frame.dataset.parallax)
+  }));
+  let queued = false;
+  function render() {
+    queued = false;
+    const viewport = innerHeight;
+    const geometry = scenes.map(scene => ({scene, rect: scene.frame.getBoundingClientRect(), imageHeight: scene.image.offsetHeight}));
+    geometry.forEach(({scene, rect, imageHeight}) => {
+      if (preference.matches) { scene.image.style.transform = ''; return; }
+      if (rect.bottom < 0 || rect.top > viewport) return;
+      // Centered reserve covers the entire active interval, including reverse scroll.
+      const reference = scene.frame.id === "accueil" ? header.offsetHeight : viewport / 2 - rect.height / 2;
+      const shift = (reference - rect.top) * (1 - scene.ratio);
+      const reserve = (imageHeight - rect.height) / 2;
+      scene.image.style.transform = `translate3d(0, ${Math.max(-reserve, Math.min(reserve, shift))}px, 0)`;
+    });
+  }
+  function schedule() { if (!queued) { queued = true; requestAnimationFrame(render); } }
+  addEventListener('scroll', schedule, {passive: true});
+  addEventListener('resize', schedule);
+  addEventListener('load', schedule);
+  preference.addEventListener('change', schedule);
+  new ResizeObserver(schedule).observe(document.body);
+  schedule();
+})();
