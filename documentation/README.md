@@ -85,7 +85,7 @@ Le script transforme les liens en boutons avec état `aria-pressed`. La sélecti
 
 ### Musique, sorties et liens
 
-- Remplacer les liens `https://push.fm/fl/enjoythefall` dans [index.html](../index.html) uniquement par une adresse confirmée. Il n'y a pas de liens spécifiques Spotify/Apple Music non vérifiés.
+- Remplacer les liens `https://push.fm/ps/good` dans [index.html](../index.html) uniquement par une adresse confirmée. Il n'y a pas de liens spécifiques Spotify/Apple Music non vérifiés.
 - GO.OD est annoncé comme **prévu en janvier 2027**, et les singles comme **prévus en octobre et novembre 2026**. Pas de changement automatique en « disponible » : confirmer la sortie effective, puis modifier la section Musique, le titre et les descriptions SEO/sociales si nécessaire.
 - Ne pas ajouter de jour précis ni de tracklist sans source. Aucun `MusicAlbum` n'est déclaré tant que les détails de publication ne sont pas suffisamment confirmés.
 

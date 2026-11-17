@@ -220,7 +220,10 @@ showFacade();
   let userPaused = false;
   let visible = true;
   function label() {
-    toggle.textContent = video.paused ? 'Animer le fond vidéo' : 'Mettre le fond vidéo en pause';
+    const action = video.paused ? 'Animer le fond vidéo' : 'Mettre le fond vidéo en pause';
+    toggle.setAttribute('aria-label', action);
+    toggle.title = action;
+    toggle.dataset.paused = String(video.paused);
   }
   async function sync() {
     if (reduced.matches) {

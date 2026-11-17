@@ -326,3 +326,8 @@ summary span { font-weight: 400; margin-left: 8px; }
 @media (min-width: 900px) {
  .hero-note { grid-template-columns: 1fr auto; }
 }
+
+.hero-video-toggle { display: grid; place-items: center; width: 44px; height: 44px; padding: 11px; }
+.hero-video-toggle .video-icon-play { display: none; }
+.hero-video-toggle[data-paused="true"] .video-icon-pause { display: none; }
+.hero-video-toggle[data-paused="true"] .video-icon-play { display: block; }
