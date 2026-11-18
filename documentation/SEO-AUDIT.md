@@ -13,7 +13,7 @@
 
 HTML en français, un H1, sections et liens sémantiques, contenu principal disponible dans le HTML sans JavaScript, photos avec alternatives et dimensions, polices locales, lecteur YouTube à la demande, image sociale 1200 × 630, canonical HTTPS, sitemap à une URL, 404 en noindex. Pas de fausses notes, avis, billetteries ou événements structurés incomplets.
 
-Le site reste canonique sur son URL GitHub Pages actuelle. `enjoythefall.fr` n’est pas déclaré tant que l’achat et le raccordement ne sont pas effectués. Le script `tools/configure-domain.mjs` remplace les occurrences du canonical, y compris les nouvelles entités, lors de la migration.
+Migration du 18 novembre 2026 : URL canonique https://enjoythefall.fr/. Les URL sociales, le JSON-LD, robots.txt et le sitemap utilisent cette base ; la page 404 utilise /. Le fichier CNAME enjoythefall.fr ajoute sur GitHub est conserve. Le certificat HTTPS est encore en cours de mise en place lors du controle HTTP/HTTPS.
 
 ## Vérifications
 

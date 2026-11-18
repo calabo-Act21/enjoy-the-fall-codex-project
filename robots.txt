@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # URL de publication configurable avec tools/configure-domain.mjs.
-Sitemap: https://calabo-act21.github.io/enjoy-the-fall-codex-project/sitemap.xml
+Sitemap: https://enjoythefall.fr/sitemap.xml
